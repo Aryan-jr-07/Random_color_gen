@@ -1,16 +1,15 @@
-function getRandomColor() {
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 256);
-  let b = Math.floor(Math.random() * 256);
-  return `rgb(${r}, ${g}, ${b})`;
-}
-
-function updateColor() {
-  document.body.style.background = getRandomColor();
-}
-
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
-      updateColor();
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+
+      let hex = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+
+      // new color to background
+      document.body.style.backgroundColor = hex;
+
+      // Update the text with color info
+      document.getElementById("color-info").textContent = `Hex: ${hex} | RGB: (${r}, ${g}, ${b})`;
   }
 });
